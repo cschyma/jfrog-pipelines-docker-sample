@@ -76,13 +76,12 @@ pipelines:
             - name: dbp_build_info
           outputResources:
             - name: dbp_promoted_build_info
+
       - name: dbp_bash
         type: Bash
         configuration:
-          inputResources:
-            - name: myGitRepo
-          outputResources:
-            - name: myBuildInfo           
+          inputSteps:
+            - name: promote_dbp_build          
         execution:
           onExecute:
             - echo $my_env_var
